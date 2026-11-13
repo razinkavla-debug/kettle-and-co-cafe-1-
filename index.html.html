@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Kettle &amp; Co. – Neighbourhood Chai Café (Demo)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@500;800&family=Newsreader:wght@400;500&display=swap">
+<style>
+:root{--bg:#EAF4F1;--ink:#12302F;--accent:#F4B400;--on-accent:#12302F;--card:#FFFFFF;--muted:#4C6968;--line:#B9D5CE;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0E2423;--ink:#EAF4F1;--card:#16393A;--muted:#9FC0BA;--line:#27504F}}
+:root[data-theme="dark"]{--bg:#0E2423;--ink:#EAF4F1;--card:#16393A;--muted:#9FC0BA;--line:#27504F}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:Newsreader,Georgia,serif;font-size:18px;line-height:1.6}
+.wrap{max-width:960px;margin:0 auto;padding:0 20px}
+h1,h2,h3,.btn,nav a{font-family:"Bricolage Grotesque",Arial,sans-serif}
+nav{display:flex;justify-content:space-between;align-items:center;padding:18px 0}
+nav b{font-size:20px;font-family:"Bricolage Grotesque",Arial,sans-serif}
+nav a{color:var(--ink);text-decoration:none;margin-left:18px;font-weight:500}
+nav a:focus-visible,.btn:focus-visible,button:focus-visible{outline:3px solid var(--accent);outline-offset:3px}
+.hero{padding:48px 0 56px}
+h1{font-size:clamp(44px,9vw,92px);line-height:.98;margin:0 0 20px;font-weight:800;letter-spacing:-.03em;max-width:11ch}
+.hero p{max-width:46ch;color:var(--muted);margin:0 0 28px}
+.btn{display:inline-block;background:var(--accent);color:var(--on-accent);padding:14px 26px;border-radius:999px;font-weight:800;text-decoration:none;border:0;font-size:16px;cursor:pointer}
+section{padding:40px 0;border-top:1px solid var(--line)}
+h2{font-size:32px;margin:0 0 18px}
+.tabs{display:flex;gap:10px;margin-bottom:20px}
+.tabs button{font:500 16px "Bricolage Grotesque",Arial,sans-serif;padding:8px 18px;border-radius:999px;border:1px solid var(--line);background:transparent;color:var(--ink);cursor:pointer}
+.tabs button[aria-pressed="true"]{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.menu{list-style:none;margin:0;padding:0}
+.menu li{display:flex;justify-content:space-between;gap:16px;padding:14px 0;border-bottom:1px dashed var(--line)}
+.menu strong{font-family:"Bricolage Grotesque",Arial,sans-serif;font-weight:500}
+.menu small{display:block;color:var(--muted);font-size:15px}
+.menu li[hidden]{display:none}
+.info{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:20px}
+.info div{background:var(--card);border-radius:14px;padding:20px}
+.info h3{margin:0 0 6px;font-size:20px}
+footer{padding:28px 0 36px;color:var(--muted);font-size:15px;border-top:1px solid var(--line)}
+@media (prefers-reduced-motion:no-preference){.btn{transition:transform .15s}.btn:hover{transform:translateY(-2px)}}
+</style>
+</head>
+<body>
+<div class="wrap">
+<nav><b>Kettle &amp; Co.</b><div><a href="#menu">Menu</a><a href="#visit">Visit</a></div></nav>
+<header class="hero">
+<h1>Chai, brewed slowly.</h1>
+<p>A small neighbourhood café serving fresh masala chai, cold coffee and hot snacks. Come in, sit down, stay a while.</p>
+<a class="btn" href="#visit">Find us</a>
+</header>
+<section id="menu">
+<h2>Menu</h2>
+<div class="tabs" role="group" aria-label="Filter menu">
+<button aria-pressed="true" data-f="all">All</button>
+<button aria-pressed="false" data-f="hot">Hot</button>
+<button aria-pressed="false" data-f="cold">Cold</button>
+</div>
+<ul class="menu">
+<li data-t="hot"><span><strong>Masala chai</strong><small>Ginger, cardamom and fresh milk</small></span><span>₹30</span></li>
+<li data-t="hot"><span><strong>Kadak cutting</strong><small>Strong, small, perfect</small></span><span>₹20</span></li>
+<li data-t="hot"><span><strong>Bun maska</strong><small>Soft bun with salted butter</small></span><span>₹40</span></li>
+<li data-t="cold"><span><strong>Cold coffee</strong><small>Blended with ice cream</small></span><span>₹90</span></li>
+<li data-t="cold"><span><strong>Lemon iced tea</strong><small>Brewed fresh every morning</small></span><span>₹60</span></li>
+</ul>
+</section>
+<section id="visit">
+<h2>Visit us</h2>
+<div class="info">
+<div><h3>Opening hours</h3><p>Every day, 7 am to 10 pm</p></div>
+<div><h3>Address</h3><p>12 Station Road, Your City<br>(sample address)</p></div>
+<div><h3>Order ahead</h3><p>Call or message us on +91 00000 00000</p></div>
+</div>
+</section>
+<footer>Demo website made as a portfolio sample.</footer>
+</div>
+<script>
+document.querySelectorAll('.tabs button').forEach(function(b){
+b.addEventListener('click',function(){
+document.querySelectorAll('.tabs button').forEach(function(x){x.setAttribute('aria-pressed',x===b)});
+var f=b.dataset.f;
+document.querySelectorAll('.menu li').forEach(function(li){li.hidden=(f!=='all'&&li.dataset.t!==f)});
+});
+});
+</script>
+</body>
+</html>
